@@ -10,19 +10,18 @@ import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { Formik, Form } from 'formik';
 import { object, string } from 'yup';
+import {
+  EMAILERROR,
+  EMAILREQ,
+  PASSWORDREQ,
+  REGEXERROR,
+  MINLENGTH,
+  REGEX,
+} from '../constants';
 import useLogin from '../hooks/useLoginHook';
 
 const Login = () => {
   const navigate = useNavigate();
-  const EMAILERROR = 'Email doğru formatta değil';
-  const PASSWORDERROR =
-    'Şifre en az 8 karakter olmalı ve en az 1 büyük harf, 1 küçük harf, 1 sayı ve 1 özel karakter içermelidir.';
-  const EMAILREQ = 'Email doldurulması zorunlu';
-  const PASSWORDREQ = 'Şifre doldurulması zorunlu';
-  const REGEXERROR =
-    'Şifre en az 1 büyük harf, 1 küçük harf ve 1 özel karakter içermelidir.';
-  const MINLENGTH = 'Şifre en az 8 karakter olmalı';
-  const REGEX = /^(?=.*[A-Z])(?=.*[.,!?-])(?=.*[a-z]).*$/;
 
   const { login } = useLogin();
 
@@ -118,7 +117,17 @@ const Login = () => {
           </Formik>
 
           <Box sx={{ textAlign: 'center', mt: 2 }}>
-            <Link to='/register'>Do you have not an account?</Link>
+            <Link
+              style={{
+                fontFamily: 'Poppins',
+                textDecoration: 'none',
+                color: 'secondary.light',
+                fontWeight: 'bold',
+              }}
+              to='/register'
+            >
+              Do you have not an account?
+            </Link>
           </Box>
         </Grid>
 
