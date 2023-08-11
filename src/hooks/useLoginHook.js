@@ -18,7 +18,11 @@ const useLogin = () => {
         userData
       );
       console.log(data);
-      dispatch(loginSuccess());
+      dispatch(
+        loginSuccess({
+          ...data,
+        })
+      );
       navigate('/stock');
       toastSuccessNotify('Login Success');
     } catch (error) {

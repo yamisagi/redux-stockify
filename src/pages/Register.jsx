@@ -7,8 +7,10 @@ import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { Formik } from 'formik';
+import { registerSchema } from '../constants/validationSchemas';
 import TextField from '@mui/material/TextField';
+import RegisterForm from '../components/RegisterForm';
 
 const Register = () => {
   const navigate = useNavigate();
@@ -48,52 +50,25 @@ const Register = () => {
             mb={2}
             color='secondary.light'
           >
-            Register
+            Kayıt Ol
           </Typography>
 
-          <Box
-            component='form'
-            sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
-          >
-            <TextField
-              label='User Name'
-              name='username'
-              id='userName'
-              type='text'
-              variant='outlined'
-            />
-            <TextField
-              label='First Name'
-              name='first_name'
-              id='firstName'
-              type='text'
-              variant='outlined'
-            />
-            <TextField
-              label='Last Name'
-              name='last_name'
-              id='last_name'
-              type='text'
-              variant='outlined'
-            />
-            <TextField
-              label='Email'
-              name='email'
-              id='email'
-              type='email'
-              variant='outlined'
-            />
-            <TextField
-              label='password'
-              name='password'
-              id='password'
-              type='password'
-              variant='outlined'
-            />
-            <Button type='submit' variant='contained' size='large'>
-              Submit
-            </Button>
-          </Box>
+          <Formik
+            initialValues={{
+              username: '',
+              first_name: '',
+              last_name: '',
+              email: '',
+              password: '',
+            }}
+            onSubmit={(values, actions) => {
+              console.log(values);
+              actions.resetForm();
+              actions.setSubmitting(false);
+            }}
+            validationSchema={registerSchema}
+            component={(props) => <RegisterForm {...props} />}
+          ></Formik>
 
           <Box sx={{ textAlign: 'center', mt: 2 }}>
             <Link
@@ -105,7 +80,7 @@ const Register = () => {
               }}
               to='/'
             >
-              Do you have an account?
+              Zaten bir hesabın var mı? Giriş yap
             </Link>
           </Box>
         </Grid>

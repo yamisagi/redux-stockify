@@ -9,30 +9,14 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button } from '@mui/material';
 import { Formik, Form } from 'formik';
-import { object, string } from 'yup';
-import {
-  EMAILERROR,
-  EMAILREQ,
-  PASSWORDREQ,
-  REGEXERROR,
-  MINLENGTH,
-  REGEX,
-} from '../constants';
+import { loginSchema } from '../constants/validationSchemas';
 import useLogin from '../hooks/useLoginHook';
+import LoginForm from '../components/LoginForm';
 
 const Login = () => {
   const navigate = useNavigate();
 
   const { login } = useLogin();
-
-  const loginSchema = object({
-    email: string().email(EMAILERROR).required(EMAILREQ),
-    password: string()
-      .required(PASSWORDREQ)
-      .min(8, MINLENGTH)
-      .max(16, 'En fazla 16 karakter girilmelidir')
-      .matches(REGEX, REGEXERROR),
-  });
 
   return (
     <Container maxWidth='lg'>
@@ -68,7 +52,7 @@ const Login = () => {
             mb={4}
             color='secondary.light'
           >
-            Login
+            Giriş
           </Typography>
 
           <Formik
@@ -80,41 +64,8 @@ const Login = () => {
               actions.setSubmitting(false);
               actions.resetForm();
             }}
-          >
-            {({ handleChange, handleBlur, values, touched, errors }) => (
-              <Form>
-                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <TextField
-                    label='Email'
-                    name='email'
-                    id='email'
-                    type='email'
-                    variant='outlined'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.email}
-                    error={touched.email && Boolean(errors.email)}
-                    helperText={errors.email}
-                  />
-                  <TextField
-                    label='Password'
-                    name='password'
-                    id='password'
-                    type='password'
-                    variant='outlined'
-                    onChange={handleChange}
-                    onBlur={handleBlur}
-                    value={values.password}
-                    error={touched.password && Boolean(errors.password)}
-                    helperText={errors.password}
-                  />
-                  <Button variant='contained' type='submit'>
-                    Submit
-                  </Button>
-                </Box>
-              </Form>
-            )}
-          </Formik>
+            component={(props) => <LoginForm {...props} />}
+          ></Formik>
 
           <Box sx={{ textAlign: 'center', mt: 2 }}>
             <Link
@@ -126,7 +77,7 @@ const Login = () => {
               }}
               to='/register'
             >
-              Do you have not an account?
+              Hesabınız yok mu?
             </Link>
           </Box>
         </Grid>
