@@ -10,9 +10,9 @@ import { loginSchema } from '../constants/validationSchemas';
 import useAuthOperations from '../hooks/useAuthOperations';
 import LoginForm from '../components/LoginForm';
 import { Fingerprint } from '@mui/icons-material';
+import { useEffect } from 'react';
 
 const Login = () => {
-
   const { login } = useAuthOperations();
 
   return (
@@ -64,8 +64,8 @@ const Login = () => {
             initialValues={{ email: '', password: '' }}
             validationSchema={loginSchema}
             onSubmit={(values, actions) => {
-              console.log(values);
               login(values);
+              sessionStorage.setItem('email', values.email);
               actions.setSubmitting(false);
               actions.resetForm();
             }}

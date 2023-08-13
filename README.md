@@ -71,7 +71,8 @@ In this project, I built a simple stock app using React, React Router, React Cus
 - [x] React Router
 - [x] React Custom Hooks
 - [x] MUI Based Components
-- [x] Implement Login, Register, and Logout Functionality
+- [x] Implement Login, Register and Logout Functionality
+- [x] Implement Responsive Drawer 
 
 
 <p align="center">(Still working on it...)</p>

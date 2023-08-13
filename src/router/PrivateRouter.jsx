@@ -3,9 +3,9 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const PrivateRouter = () => {
   const { currentUser } = useSelector((state) => state.auth);
-  console.log(currentUser);
+  const session = sessionStorage.getItem('email');
 
-  return currentUser ? <Outlet /> : <Navigate to='/' />;
+  return currentUser || session ? <Outlet /> : <Navigate to='/' />;
 };
 
 export default PrivateRouter;
