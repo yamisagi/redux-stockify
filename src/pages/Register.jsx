@@ -1,20 +1,18 @@
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import LockIcon from '@mui/icons-material/Lock';
 import image from '../assets/result.svg';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { Formik } from 'formik';
 import { registerSchema } from '../constants/validationSchemas';
-import TextField from '@mui/material/TextField';
 import RegisterForm from '../components/RegisterForm';
+import { Fingerprint } from '@mui/icons-material';
+import useAuthOperations from '../hooks/useAuthOperations';
 
 const Register = () => {
-  const navigate = useNavigate();
-
+  const { register } = useAuthOperations();
   return (
     <Container maxWidth='lg'>
       <Grid
@@ -28,7 +26,15 @@ const Register = () => {
         }}
       >
         <Grid item xs={12}>
-          <Typography variant='h3' color='primary' align='center'>
+          <Typography
+            variant='h3'
+            color='primary'
+            align='center'
+            sx={{
+              fontWeight: 'bold',
+              letterSpacing: '0.1em',
+            }}
+          >
             STOCK APP
           </Typography>
         </Grid>
@@ -36,21 +42,21 @@ const Register = () => {
         <Grid item xs={12} sm={10} md={6}>
           <Avatar
             sx={{
-              backgroundColor: 'secondary.light',
+              backgroundColor: 'primary.button',
               m: 'auto',
               width: 40,
               height: 40,
             }}
           >
-            <LockIcon size='30' />
+            <Fingerprint />
           </Avatar>
           <Typography
             variant='h4'
             align='center'
             mb={2}
-            color='secondary.light'
+            color='primary.textHeaderColor'
           >
-            Kayıt Ol
+            Register
           </Typography>
 
           <Formik
@@ -61,12 +67,15 @@ const Register = () => {
               email: '',
               password: '',
             }}
+            validationSchema={registerSchema}
             onSubmit={(values, actions) => {
+              // We could add new fields to the formik for password2
+              // But I think this is a better way to do it for now
               console.log(values);
-              actions.resetForm();
+              register({ ...values, password2: values.password });
+
               actions.setSubmitting(false);
             }}
-            validationSchema={registerSchema}
             component={(props) => <RegisterForm {...props} />}
           ></Formik>
 
@@ -80,7 +89,7 @@ const Register = () => {
               }}
               to='/'
             >
-              Zaten bir hesabın var mı? Giriş yap
+              Already have an account? Login
             </Link>
           </Box>
         </Grid>

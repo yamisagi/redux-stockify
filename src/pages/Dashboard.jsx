@@ -2,13 +2,15 @@ import React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-
+import useAuthOperations from '../hooks/useAuthOperations';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useSelector } from 'react-redux';
 
 function Dashboard() {
-  const currentUser = true;
+  const { currentUser } = useSelector((state) => state.auth);
+  const { logout } = useAuthOperations();
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -24,7 +26,13 @@ function Dashboard() {
             STOCK APP
           </Typography>
           {currentUser && (
-            <Button fontFamily={'Poppins'} color='inherit'>
+            <Button
+              onClick={() => {
+                logout();
+              }}
+              fontFamily={'Poppins'}
+              color='inherit'
+            >
               Logout
             </Button>
           )}

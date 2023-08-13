@@ -4,7 +4,13 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import { Form } from 'formik';
 
-const LoginForm = ({ handleChange, handleBlur, values, touched, errors }) => {
+const LoginForm = ({
+  handleChange,
+  handleBlur,
+  values,
+  touched,
+  errors, //
+}) => {
   return (
     <Form>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -21,7 +27,7 @@ const LoginForm = ({ handleChange, handleBlur, values, touched, errors }) => {
           helperText={errors.email}
         />
         <TextField
-          label='Şifre'
+          label='Password'
           name='password'
           id='password'
           type='password'
@@ -32,8 +38,16 @@ const LoginForm = ({ handleChange, handleBlur, values, touched, errors }) => {
           error={touched.password && Boolean(errors.password)}
           helperText={errors.password}
         />
-        <Button variant='contained' type='submit'>
-          Giriş Yap
+        <Button
+          variant='contained'
+          type='submit'
+          sx={{
+            backgroundColor: 'primary.button',
+            color: 'primary.text',
+            '&:hover': { backgroundColor: 'primary.buttonHover' },
+          }}
+        >
+          Login
         </Button>
       </Box>
     </Form>

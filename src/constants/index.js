@@ -1,17 +1,17 @@
-const EMAILERROR = 'Email doğru formatta değil';
-const EMAILREQ = 'Email doldurulması zorunlu';
-const PASSWORDREQ = 'Şifre doldurulması zorunlu';
+const EMAILERROR = 'Email is not valid';
+const EMAILREQ = 'Email is required';
+const PASSWORDREQ = 'Password is required';
 const REGEXERROR =
-  'Şifre en az 1 büyük harf, 1 küçük harf ve 1 özel karakter içermelidir.';
-const MINLENGTH = 'Şifre en az 8 karakter olmalı';
+  'Password must contain at least one uppercase letter, one lowercase letter and one special character';
+const MINLENGTH = 'Password must be at least 8 characters long';
 const REGEX = /^(?=.*[A-Z])(?=.*[!,?{}><%&$#£+-.])(?=.*[a-z]).*$/;
-const NAMEERROR = 'İsim doldurulması zorunlu';
-const SURNAMEERROR = 'Soyisim doldurulması zorunlu';
-const USERNAMEERROR = 'Kullanıcı adı doldurulması zorunlu';
-const USERNAMELENGTH = 'Kullanıcı adı en fazla 10 karakter olmalı';
-const NAMELENGTH = 'İsim en fazla 20 karakter olmalı';
-const SURNAMELENGTH = 'Soyisim en fazla 30 karakter olmalı';
-const PASSWORDLENGTH = 'Şifre en fazla 20 karakter olmalı';
+const NAMEERROR = 'Name is required';
+const SURNAMEERROR = 'Surname is required';
+const USERNAMEERROR = 'Username is required';
+const USERNAMELENGTH = 'Username must be max 10 characters long';
+const NAMELENGTH = 'Name must be max 20 characters long';
+const SURNAMELENGTH = 'Surname must be max 20 characters long';
+const PASSWORDLENGTH = 'Password must be max 20 characters long';
 
 export {
   EMAILERROR,

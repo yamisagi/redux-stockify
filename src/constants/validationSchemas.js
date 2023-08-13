@@ -19,8 +19,7 @@ export const registerSchema = object({
   username: string().max(10, USERNAMELENGTH).required(USERNAMEERROR),
   first_name: string().max(20, NAMELENGTH).required(NAMEERROR),
   last_name: string().max(20, SURNAMELENGTH).required(SURNAMEERROR),
-
-  email: string().email().required(EMAILREQ),
+  email: string().email(EMAILERROR).required(EMAILREQ),
   password: string()
     .required(PASSWORDREQ)
     .min(8, MINLENGTH)

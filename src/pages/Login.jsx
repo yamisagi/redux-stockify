@@ -2,21 +2,18 @@ import Avatar from '@mui/material/Avatar';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import LockIcon from '@mui/icons-material/Lock';
 import image from '../assets/result.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { Button } from '@mui/material';
-import { Formik, Form } from 'formik';
+import { Formik } from 'formik';
 import { loginSchema } from '../constants/validationSchemas';
-import useLogin from '../hooks/useLoginHook';
+import useAuthOperations from '../hooks/useAuthOperations';
 import LoginForm from '../components/LoginForm';
+import { Fingerprint } from '@mui/icons-material';
 
 const Login = () => {
-  const navigate = useNavigate();
 
-  const { login } = useLogin();
+  const { login } = useAuthOperations();
 
   return (
     <Container maxWidth='lg'>
@@ -30,7 +27,15 @@ const Login = () => {
         }}
       >
         <Grid item xs={12} mb={3}>
-          <Typography variant='h3' color='primary' align='center'>
+          <Typography
+            variant='h3'
+            color='primary'
+            align='center'
+            sx={{
+              fontWeight: 'bold',
+              letterSpacing: '0.1em',
+            }}
+          >
             STOCK APP
           </Typography>
         </Grid>
@@ -38,21 +43,21 @@ const Login = () => {
         <Grid item xs={12} sm={10} md={6}>
           <Avatar
             sx={{
-              backgroundColor: 'secondary.light',
+              backgroundColor: 'primary.button',
               m: 'auto',
               width: 40,
               height: 40,
             }}
           >
-            <LockIcon size='30' />
+            <Fingerprint />
           </Avatar>
           <Typography
             variant='h4'
             align='center'
             mb={4}
-            color='secondary.light'
+            color='primary.textHeaderColor'
           >
-            Giriş
+            Login
           </Typography>
 
           <Formik
@@ -77,7 +82,7 @@ const Login = () => {
               }}
               to='/register'
             >
-              Hesabınız yok mu?
+              Don&#39;t have an account? Register
             </Link>
           </Box>
         </Grid>
