@@ -64,8 +64,7 @@ const Login = () => {
             initialValues={{ email: '', password: '' }}
             validationSchema={loginSchema}
             onSubmit={(values, actions) => {
-              login(values);
-              sessionStorage.setItem('email', values.email);
+              login(values);            
               actions.setSubmitting(false);
               actions.resetForm();
             }}

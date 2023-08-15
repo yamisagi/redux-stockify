@@ -24,16 +24,22 @@ const useAuthOperations = () => {
         `${baseUrl}/account/auth/login/`,
         userData
       );
-      const { key, user } = data;
       console.log(data);
-      dispatch(loginSuccess({ key, user }));
+      sessionStorage.setItem('token', data.key);
+      const { key, user } = data;
+      dispatch(
+        // We can use this action to set the user data in the store or
+        // loginSuccess(data) to set the user data in the store
+        loginSuccess({
+          user,
+          key,
+        })
+      );
       navigate('/stock');
       toastSuccessNotify('Login Success');
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify('Login Failed');
-      // TODO: Delete This After Certificates are added
-      navigate('/stock');
       console.log(error);
     }
   };
@@ -42,7 +48,6 @@ const useAuthOperations = () => {
     dispatch(fetchStart());
     try {
       await axios.post(`${baseUrl}/account/auth/logout/`);
-
       dispatch(logoutSuccess());
       navigate('/');
       toastSuccessNotify('Logout Success');

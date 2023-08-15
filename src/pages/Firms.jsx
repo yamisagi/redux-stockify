@@ -1,32 +1,16 @@
 import { Typography, Button } from '@mui/material';
 import React from 'react';
 import { useEffect } from 'react';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
+import useStockOperations from '../hooks/useStockOperations';
 
 const Firms = () => {
-  const { token } = useSelector((state) => state.auth);
+  const { firms } = useSelector((state) => state.stock);
+  const { getInfo } = useStockOperations();
   useEffect(() => {
-    const getFirms = async () => {
-      try {
-        const { data } = await axios(
-          `${import.meta.env.VITE_BASE_URL}/stock/firms/`,
-          {
-            headers: {
-              Authorization: `Token ${token}`,
-              // This is the Standard Authorization header for JWT.
-              // The token is the one we get when we login the user.
-              
-            },
-          }
-        );
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    // TODO: Certificates is not working rn
-    // getFirms();
-  }, [token]);
+    getInfo('firms');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <Typography
