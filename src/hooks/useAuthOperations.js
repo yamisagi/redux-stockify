@@ -32,6 +32,8 @@ const useAuthOperations = () => {
     } catch (error) {
       dispatch(fetchFail());
       toastErrorNotify('Login Failed');
+      // TODO: Delete This After Certificates are added
+      navigate('/stock');
       console.log(error);
     }
   };

@@ -6,14 +6,42 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
 import menuItems from '../constants/menuItems';
+import { useNavigate } from 'react-router-dom';
 
 const MenuListItem = () => {
+  // TODO: Set Active Menu Item on click
+  const navigate = useNavigate();
+  const { window } = globalThis || {};
   return (
     <List>
       {menuItems.map((item, index) => (
-        <ListItem key={index} disablePadding>
+        <ListItem
+          key={index}
+          disablePadding
+          sx={{
+            cursor: 'pointer',
+            color: 'white',
+            '&:hover': { color: 'primary.drawerItemHover' },
+            '&:hover .MuiSvgIcon-root': {
+              color: 'primary.drawerItemHover',
+            },
+          }}
+          onClick={() => {
+            if (item.title === 'Admin Panel') {
+              window.open(item.link, '_blank');
+              return;
+            }
+            navigate(item.link);
+          }}
+        >
           <ListItemButton>
-            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemIcon
+              sx={{
+                color: 'white',
+              }}
+            >
+              {item.icon}
+            </ListItemIcon>
             <ListItemText primary={item.title} />
           </ListItemButton>
         </ListItem>

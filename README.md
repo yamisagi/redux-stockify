@@ -73,6 +73,8 @@ In this project, I built a simple stock app using React, React Router, React Cus
 - [x] MUI Based Components
 - [x] Implement Login, Register and Logout Functionality
 - [x] Implement Responsive Drawer 
+- [x] Change Style of the Drawer
+- [x] Improve Routing and Navigation
 
 
 <p align="center">(Still working on it...)</p>
