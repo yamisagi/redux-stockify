@@ -30,7 +30,7 @@ const Dashboard = (props) => {
     <div>
       <Toolbar />
       <Divider />
-      <MenuListItem />
+      <MenuListItem mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
     </div>
   );
 
@@ -40,7 +40,6 @@ const Dashboard = (props) => {
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
-
       <AppBar
         position='fixed'
         sx={{

@@ -3,12 +3,14 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import useStockOperations from '../hooks/useStockOperations';
+import { getStaticProps } from '../constants/stockTypes';
 
 const Firms = () => {
   const { firms } = useSelector((state) => state.stock);
-  const { getInfo } = useStockOperations();
+  const { getInfo, deleteStockInfo } = useStockOperations();
+  const { FIRMS } = getStaticProps;
   useEffect(() => {
-    getInfo('firms');
+    getInfo(FIRMS);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

@@ -77,6 +77,8 @@ In this project, I built a simple stock app using React, React Router, React Cus
 - [x] Improve Routing and Navigation
 - [x] Create Custom Hook for Stock Data
 - [x] Create Stock Slice and Reducers
+- [x] Create Stock Actions
+- [x] Get & Delete Stock Data
 
 
 <p align="center">(Still working on it...)</p>

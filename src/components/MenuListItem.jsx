@@ -8,7 +8,7 @@ import ListItemText from '@mui/material/ListItemText';
 import menuItems from '../constants/menuItems';
 import { useNavigate } from 'react-router-dom';
 
-const MenuListItem = () => {
+const MenuListItem = ({ mobileOpen, setMobileOpen }) => {
   // TODO: Set Active Menu Item on click
   const navigate = useNavigate();
   const { window } = globalThis || {};
@@ -32,6 +32,9 @@ const MenuListItem = () => {
               return;
             }
             navigate(item.link);
+            if (mobileOpen) {
+              setMobileOpen(false);
+            }
           }}
         >
           <ListItemButton>

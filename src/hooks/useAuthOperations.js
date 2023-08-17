@@ -24,7 +24,6 @@ const useAuthOperations = () => {
         `${baseUrl}/account/auth/login/`,
         userData
       );
-      console.log(data);
       sessionStorage.setItem('token', data.key);
       const { key, user } = data;
       dispatch(
