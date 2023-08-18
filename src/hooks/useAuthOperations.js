@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toastSuccessNotify, toastErrorNotify } from '../helper/ToastNotify';
 import { useDispatch } from 'react-redux';
@@ -9,19 +8,18 @@ import {
   logoutSuccess,
   registerSuccess,
 } from '../features/authSlice';
-
-const baseUrl = import.meta.env.VITE_BASE_URL;
+import useAxios from './useAxios';
 
 const useAuthOperations = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const { axiosWithoutToken } = useAxios();
   const login = async (userData) => {
     console.log(userData);
     dispatch(fetchStart());
     try {
-      const { data } = await axios.post(
-        `${baseUrl}/account/auth/login/`,
+      const { data } = await axiosWithoutToken.post(
+        `/account/auth/login/`,
         userData
       );
       sessionStorage.setItem('token', data.key);
@@ -46,7 +44,7 @@ const useAuthOperations = () => {
   const logout = async () => {
     dispatch(fetchStart());
     try {
-      await axios.post(`${baseUrl}/account/auth/logout/`);
+      await axiosWithoutToken.post(`/account/auth/logout/`);
       dispatch(logoutSuccess());
       navigate('/');
       toastSuccessNotify('Logout Success');
@@ -60,8 +58,8 @@ const useAuthOperations = () => {
   const register = async (userData) => {
     dispatch(fetchStart());
     try {
-      const { data } = await axios.post(
-        `${baseUrl}/account/register/`,
+      const { data } = await axiosWithoutToken.post(
+        `/account/register/`,
         userData
       );
       console.log(data);
