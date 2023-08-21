@@ -4,8 +4,12 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import useStockOperations from '../hooks/useStockOperations';
+import { getStaticProps } from '../constants/stockTypes';
 
-export default function FirmCard({ image, title, address, tel, alt }) {
+export default function FirmCard({ image, title, address, tel, alt, id }) {
+  const { deleteStockInfo, getInfo } = useStockOperations();
+  const { FIRMS } = getStaticProps;
   return (
     <Card
       sx={{
@@ -98,6 +102,9 @@ export default function FirmCard({ image, title, address, tel, alt }) {
           sx={{
             bgcolor: 'error.main',
             color: 'white',
+          }}
+          onClick={() => {
+            deleteStockInfo(FIRMS, id);
           }}
         >
           Delete

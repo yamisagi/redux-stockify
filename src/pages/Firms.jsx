@@ -1,14 +1,19 @@
 import { Typography, Button, Grid } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import useStockOperations from '../hooks/useStockOperations';
 import { getStaticProps } from '../constants/stockTypes';
 import FirmCard from '../components/FirmCard';
+import FirmModal from '../components/FirmModal';
 
 const Firms = () => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const { firms } = useSelector((state) => state.stock);
-  const { getInfo, deleteStockInfo } = useStockOperations();
+  const { getInfo } = useStockOperations();
   const { FIRMS } = getStaticProps;
   useEffect(() => {
     getInfo(FIRMS);
@@ -16,6 +21,7 @@ const Firms = () => {
   }, []);
   return (
     <>
+      <FirmModal open={open} handleClose={handleClose} />
       <Typography
         variant='h5'
         sx={{
@@ -24,7 +30,9 @@ const Firms = () => {
       >
         Firms
       </Typography>
-      <Button variant='contained'>Add Firm</Button>
+      <Button variant='contained' onClick={handleOpen}>
+        Add Firm
+      </Button>
       <Grid container spacing={2}>
         {firms.map((firm) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={firm.id}>
@@ -34,6 +42,7 @@ const Firms = () => {
               address={firm.address}
               tel={firm.phone}
               alt={firm.name}
+              id={firm.id}
             />
           </Grid>
         ))}

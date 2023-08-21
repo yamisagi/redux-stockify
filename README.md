@@ -72,14 +72,15 @@ In this project, I built a simple stock app using React, React Router, React Cus
 - [x] React Custom Hooks
 - [x] MUI Based Components
 - [x] Implement Login, Register and Logout Functionality
-- [x] Implement Responsive Drawer 
+- [x] Implement Responsive Drawer
 - [x] Change Style of the Drawer
 - [x] Improve Routing and Navigation
 - [x] Create Custom Hook for Stock Data
 - [x] Create Stock Slice and Reducers
 - [x] Create Stock Actions
 - [x] Get & Delete Stock Data
-
+- [x] Add Firm Data to the Backend
+- [x] Delete Firm Data from the Backend
 
 <p align="center">(Still working on it...)</p>
 
