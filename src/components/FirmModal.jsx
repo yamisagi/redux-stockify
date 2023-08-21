@@ -19,22 +19,28 @@ export default function FirmModal({
 }) {
   const { postStockInfo, updateStockInfo } = useStockOperations();
   const { FIRMS } = getStaticProps;
-  const { firms } = useSelector((state) => state.stock);
 
-  useEffect(() => {
-    if (isUpdate && id) {
-      const firm = firms.find((firm) => firm.id === id);
-      setInfo(firm);
-    } else {
-      setInfo({
-        name: '',
-        address: '',
-        phone: '',
-        image: '',
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, isUpdate]);
+  {
+    //! This is the code that was another way to fill
+    //! the form with the info of the firm to be updated
+    //! but there is easier way to do it without the useEffect
+    //********************************************************* */
+    // const { firms } = useSelector((state) => state.stock);
+    // useEffect(() => {
+    //   if (isUpdate && id) {
+    //     const firm = firms.find((firm) => firm.id === id);
+    //     setInfo(firm);
+    //   } else {
+    //     setInfo({
+    //       name: '',
+    //       address: '',
+    //       phone: '',
+    //       image: '',
+    //     });
+    //   }
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [id, isUpdate]);
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;

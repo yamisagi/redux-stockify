@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -7,15 +7,9 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import useStockOperations from '../hooks/useStockOperations';
 import { getStaticProps } from '../constants/stockTypes';
 
-export default function FirmCard({
-  firm,
-  handleOpen,
-  setIsUpdate,
-  setInfo,
-  info,
-}) {
-  const { image, title, address, phone, alt, id } = firm;
-  const { deleteStockInfo, getInfo } = useStockOperations();
+export default function FirmCard({ firm, handleOpen, setIsUpdate, setInfo }) {
+  const { image, name, address, phone, alt, id } = firm;
+  const { deleteStockInfo } = useStockOperations();
   const { FIRMS } = getStaticProps;
   return (
     <Card
@@ -67,7 +61,7 @@ export default function FirmCard({
               textAlign: 'center',
             }}
           >
-            {title}
+            {name}
           </Typography>
           <Typography
             variant='body2'
@@ -106,10 +100,7 @@ export default function FirmCard({
           onClick={() => {
             handleOpen();
             setIsUpdate(true);
-            setInfo({
-              ...info,
-              id,
-            });
+            setInfo(firm);
           }}
         >
           Edit
