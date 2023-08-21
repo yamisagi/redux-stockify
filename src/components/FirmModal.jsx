@@ -6,8 +6,6 @@ import { modalStyle } from '../styles/globalStyles';
 import { TextField } from '@mui/material';
 import useStockOperations from '../hooks/useStockOperations';
 import { getStaticProps } from '../constants/stockTypes';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 export default function FirmModal({
   open,

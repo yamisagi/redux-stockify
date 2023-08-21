@@ -18,7 +18,16 @@ const Firms = () => {
     id: '',
   });
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setInfo({
+      name: '',
+      address: '',
+      phone: '',
+      image: '',
+      id: '',
+    });
+  };
 
   const { firms } = useSelector((state) => state.stock);
 
