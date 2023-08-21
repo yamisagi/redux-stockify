@@ -7,7 +7,14 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 import useStockOperations from '../hooks/useStockOperations';
 import { getStaticProps } from '../constants/stockTypes';
 
-export default function FirmCard({ image, title, address, tel, alt, id }) {
+export default function FirmCard({
+  firm,
+  handleOpen,
+  setIsUpdate,
+  setInfo,
+  info,
+}) {
+  const { image, title, address, phone, alt, id } = firm;
   const { deleteStockInfo, getInfo } = useStockOperations();
   const { FIRMS } = getStaticProps;
   return (
@@ -84,7 +91,7 @@ export default function FirmCard({ image, title, address, tel, alt, id }) {
               fontWeight: '700',
             }}
           >
-            Phone: {tel}
+            Phone: {phone}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -93,7 +100,18 @@ export default function FirmCard({ image, title, address, tel, alt, id }) {
           margin: 'auto',
         }}
       >
-        <Button size='small' variant='contained'>
+        <Button
+          size='small'
+          variant='contained'
+          onClick={() => {
+            handleOpen();
+            setIsUpdate(true);
+            setInfo({
+              ...info,
+              id,
+            });
+          }}
+        >
           Edit
         </Button>
         <Button

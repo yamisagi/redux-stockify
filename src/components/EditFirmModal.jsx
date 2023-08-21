@@ -6,35 +6,17 @@ import { modalStyle } from '../styles/globalStyles';
 import { TextField } from '@mui/material';
 import useStockOperations from '../hooks/useStockOperations';
 import { getStaticProps } from '../constants/stockTypes';
-import { useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
-export default function FirmModal({
-  open,
-  handleClose,
-  id,
-  isUpdate,
-  info,
-  setInfo,
-}) {
-  const { postStockInfo, updateStockInfo } = useStockOperations();
+export default function FirmModal({ updateOpen, id, handleUpdateClose }) {
+  const { updateStockInfo } = useStockOperations();
   const { FIRMS } = getStaticProps;
-  const { firms } = useSelector((state) => state.stock);
-
-  useEffect(() => {
-    if (isUpdate && id) {
-      const firm = firms.find((firm) => firm.id === id);
-      setInfo(firm);
-    } else {
-      setInfo({
-        name: '',
-        address: '',
-        phone: '',
-        image: '',
-      });
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [id, isUpdate]);
+  //? Properties are same as Backend post request
+  const [info, setInfo] = useState({
+    name: '',
+    address: '',
+    phone: '',
+    image: '',
+  });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,29 +28,24 @@ export default function FirmModal({
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(info);
-
-    // Post or Update the info to the backend
-    if (isUpdate) {
-      updateStockInfo(FIRMS, id, info);
-    } else postStockInfo(FIRMS, info);
-
-    // Clear the form
+    // Put the info to the backend
+    updateStockInfo(FIRMS, id, info);
     setInfo({
       name: '',
       address: '',
       phone: '',
       image: '',
     });
-    handleClose();
+    handleUpdateClose();
   };
 
   return (
     <>
       <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
+        open={updateOpen}
+        onClose={handleUpdateClose}
+        aria-labelledby='update-modal-title'
+        aria-describedby='update-modal-description'
         sx={{
           backdropFilter: 'blur(5px)',
         }}
@@ -125,7 +102,7 @@ export default function FirmModal({
             type='url'
           />
           <Button variant='contained' type='submit'>
-            Submit
+            Update Firm
           </Button>
         </Box>
       </Modal>
