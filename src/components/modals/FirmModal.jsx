@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import { modalStyle } from '../styles/globalStyles';
+import { modalStyle } from '../../styles/globalStyles';
 import { TextField } from '@mui/material';
-import useStockOperations from '../hooks/useStockOperations';
-import { getStaticProps } from '../constants/stockTypes';
+import useStockOperations from '../../hooks/useStockOperations';
+import { getStaticProps } from '../../constants/stockTypes';
 
 export default function FirmModal({
   open,
