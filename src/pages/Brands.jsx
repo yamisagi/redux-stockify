@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import useStockOperations from '../hooks/useStockOperations';
 import { getStaticProps } from '../constants/stockTypes';
-import BrandCard from '../components/BrandCard';
+import BrandCard from '../components/cards/BrandCard';
 import BrandModal from '../components/modals/BrandModal';
 
 const Brands = () => {
@@ -53,7 +53,7 @@ const Brands = () => {
               mb: 2,
             }}
           >
-            Firms
+            Brands
           </Typography>
           <Button
             variant='contained'
@@ -62,7 +62,7 @@ const Brands = () => {
               setIsUpdate(false);
             }}
           >
-            Add Firm
+            Add Brand
           </Button>
           <BrandModal
             open={open}

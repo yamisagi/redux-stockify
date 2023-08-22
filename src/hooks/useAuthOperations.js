@@ -9,20 +9,20 @@ import {
   registerSuccess,
 } from '../features/authSlice';
 import useAxios from './useAxios';
+import { urls } from '../constants/routes';
 
 const useAuthOperations = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { axiosWithoutToken } = useAxios();
-  
+
+  const { stock, loginPath, loginUrl, registerUrl, logoutUrl } = urls;
+
   const login = async (userData) => {
     console.log(userData);
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithoutToken.post(
-        `/account/auth/login/`,
-        userData
-      );
+      const { data } = await axiosWithoutToken.post(loginUrl, userData);
       sessionStorage.setItem('token', data.key);
       const { key, user } = data;
       dispatch(
@@ -33,7 +33,7 @@ const useAuthOperations = () => {
           key,
         })
       );
-      navigate('/stock');
+      navigate(stock);
       toastSuccessNotify('Login Success');
     } catch (error) {
       dispatch(fetchFail());
@@ -45,9 +45,9 @@ const useAuthOperations = () => {
   const logout = async () => {
     dispatch(fetchStart());
     try {
-      await axiosWithoutToken.post(`/account/auth/logout/`);
+      await axiosWithoutToken.post(logoutUrl);
       dispatch(logoutSuccess());
-      navigate('/');
+      navigate(loginPath);
       toastSuccessNotify('Logout Success');
     } catch (error) {
       dispatch(fetchFail());
@@ -60,12 +60,12 @@ const useAuthOperations = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithoutToken.post(
-        `/account/register/`,
+        registerUrl,
         userData
       );
       console.log(data);
       dispatch(registerSuccess(data));
-      navigate('/stock');
+      navigate(stock);
       toastSuccessNotify('Register Success');
     } catch (error) {
       dispatch(fetchFail());

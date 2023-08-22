@@ -21,6 +21,7 @@ const Dashboard = (props) => {
   const { currentUser } = useSelector((state) => state.auth);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const session = sessionStorage.getItem('token');
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -60,7 +61,7 @@ const Dashboard = (props) => {
           <Typography variant='h6' noWrap component='div'>
             Stock App
           </Typography>
-          {currentUser && (
+          {(currentUser || session) && (
             <Button
               variant='outlined'
               sx={{ ml: 'auto', color: 'primary.text' }}
@@ -76,7 +77,7 @@ const Dashboard = (props) => {
       <Box
         component='nav'
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label='mailbox folders'
+        aria-label='stock areas'
       >
         <Drawer
           container={container}

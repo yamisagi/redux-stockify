@@ -4,13 +4,13 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import useStockOperations from '../hooks/useStockOperations';
-import { getStaticProps } from '../constants/stockTypes';
+import useStockOperations from '../../hooks/useStockOperations';
+import { getStaticProps } from '../../constants/stockTypes';
 
-export default function FirmCard({ brand, handleOpen, setIsUpdate, setInfo }) {
-  const { image, name, id } = brand;
+export default function FirmCard({ firm, handleOpen, setIsUpdate, setInfo }) {
+  const { image, name, address, phone, alt, id } = firm;
   const { deleteStockInfo } = useStockOperations();
-  const { BRANDS } = getStaticProps;
+  const { FIRMS } = getStaticProps;
   return (
     <Card
       sx={{
@@ -26,7 +26,7 @@ export default function FirmCard({ brand, handleOpen, setIsUpdate, setInfo }) {
       <CardMedia
         component='img'
         image={image}
-        alt={name}
+        alt={alt}
         sx={{
           padding: 1,
           mt: 1,
@@ -63,6 +63,30 @@ export default function FirmCard({ brand, handleOpen, setIsUpdate, setInfo }) {
           >
             {name}
           </Typography>
+          <Typography
+            variant='body2'
+            sx={{
+              mb: 0.5,
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+              whiteSpace: 'wrap',
+              textTransform: 'capitalize',
+              fontWeight: '500',
+            }}
+          >
+            {address}
+          </Typography>
+          <Typography
+            variant='body2'
+            sx={{
+              my: 2,
+              textAlign: 'center',
+              textTransform: 'capitalize',
+              fontWeight: '700',
+            }}
+          >
+            Phone: {phone}
+          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions
@@ -76,7 +100,7 @@ export default function FirmCard({ brand, handleOpen, setIsUpdate, setInfo }) {
           onClick={() => {
             handleOpen();
             setIsUpdate(true);
-            setInfo(brand);
+            setInfo(firm);
           }}
         >
           Edit
@@ -89,7 +113,7 @@ export default function FirmCard({ brand, handleOpen, setIsUpdate, setInfo }) {
             color: 'white',
           }}
           onClick={() => {
-            deleteStockInfo(BRANDS, id);
+            deleteStockInfo(FIRMS, id);
           }}
         >
           Delete

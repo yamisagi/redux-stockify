@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import useStockOperations from '../hooks/useStockOperations';
 import { getStaticProps } from '../constants/stockTypes';
-import FirmCard from '../components/FirmCard';
+import FirmCard from '../components/cards/FirmCard';
 import FirmModal from '../components/modals/FirmModal';
 
 const Firms = () => {

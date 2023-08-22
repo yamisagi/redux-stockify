@@ -7,7 +7,7 @@ import { TextField } from '@mui/material';
 import useStockOperations from '../../hooks/useStockOperations';
 import { getStaticProps } from '../../constants/stockTypes';
 
-export default function BrandModal({
+export default function ProductModal({
   open,
   handleClose,
   id,
@@ -16,7 +16,7 @@ export default function BrandModal({
   setInfo,
 }) {
   const { postStockInfo, updateStockInfo } = useStockOperations();
-  const { BRANDS } = getStaticProps;
+  const { PRODUCTS } = getStaticProps;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,15 +31,18 @@ export default function BrandModal({
 
     // Post or Update the info to the backend
     if (isUpdate) {
-      updateStockInfo(BRANDS, id, info);
-    } else postStockInfo(BRANDS, info);
+      updateStockInfo(PRODUCTS, id, info);
+    } else postStockInfo(PRODUCTS, info);
 
     // Clear the form
     setInfo({
       name: '',
-      address: '',
-      phone: '',
-      image: '',
+      id: '',
+      category: '',
+      category_id: '',
+      brand: '',
+      brand_id: '',
+      stock: 0,
     });
     handleClose();
   };
@@ -70,22 +73,12 @@ export default function BrandModal({
         >
           <TextField
             required
-            id='brand-name'
-            label='Brand Name'
+            id='product-name'
+            label='Product Name'
             name='name'
             variant='outlined'
             value={info?.name}
             onChange={handleChange}
-          />
-          <TextField
-            required
-            id='brand-image'
-            label='Brand Image'
-            name='image'
-            variant='outlined'
-            value={info?.image}
-            onChange={handleChange}
-            type='url'
           />
           <Button variant='contained' type='submit'>
             Submit

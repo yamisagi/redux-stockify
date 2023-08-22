@@ -4,13 +4,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
-import useStockOperations from '../hooks/useStockOperations';
-import { getStaticProps } from '../constants/stockTypes';
+import useStockOperations from '../../hooks/useStockOperations';
+import { getStaticProps } from '../../constants/stockTypes';
 
-export default function FirmCard({ firm, handleOpen, setIsUpdate, setInfo }) {
-  const { image, name, address, phone, alt, id } = firm;
+export default function ProductCard({
+  product,
+  handleOpen,
+  setIsUpdate,
+  setInfo,
+}) {
+  const { id, name, category, category_id, brand, brand_id, stock } = product;
   const { deleteStockInfo } = useStockOperations();
-  const { FIRMS } = getStaticProps;
+  const { BRANDS } = getStaticProps;
   return (
     <Card
       sx={{
@@ -23,19 +28,6 @@ export default function FirmCard({ firm, handleOpen, setIsUpdate, setInfo }) {
         alignItems: 'center',
       }}
     >
-      <CardMedia
-        component='img'
-        image={image}
-        alt={alt}
-        sx={{
-          padding: 1,
-          mt: 1,
-          height: 140,
-          maxHeight: 140,
-          imageOrientation: 'center',
-          objectFit: 'contain',
-        }}
-      />
       <CardActionArea
         sx={{
           height: '100%',
@@ -63,30 +55,6 @@ export default function FirmCard({ firm, handleOpen, setIsUpdate, setInfo }) {
           >
             {name}
           </Typography>
-          <Typography
-            variant='body2'
-            sx={{
-              mb: 0.5,
-              textOverflow: 'ellipsis',
-              overflow: 'hidden',
-              whiteSpace: 'wrap',
-              textTransform: 'capitalize',
-              fontWeight: '500',
-            }}
-          >
-            {address}
-          </Typography>
-          <Typography
-            variant='body2'
-            sx={{
-              my: 2,
-              textAlign: 'center',
-              textTransform: 'capitalize',
-              fontWeight: '700',
-            }}
-          >
-            Phone: {phone}
-          </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions
@@ -100,7 +68,7 @@ export default function FirmCard({ firm, handleOpen, setIsUpdate, setInfo }) {
           onClick={() => {
             handleOpen();
             setIsUpdate(true);
-            setInfo(firm);
+            setInfo(product);
           }}
         >
           Edit
@@ -113,7 +81,7 @@ export default function FirmCard({ firm, handleOpen, setIsUpdate, setInfo }) {
             color: 'white',
           }}
           onClick={() => {
-            deleteStockInfo(FIRMS, id);
+            deleteStockInfo(BRANDS, id);
           }}
         >
           Delete
