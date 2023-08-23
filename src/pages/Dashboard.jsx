@@ -21,7 +21,6 @@ const Dashboard = (props) => {
   const { currentUser } = useSelector((state) => state.auth);
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const session = sessionStorage.getItem('token');
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -61,7 +60,7 @@ const Dashboard = (props) => {
           <Typography variant='h6' noWrap component='div'>
             Stock App
           </Typography>
-          {(currentUser || session) && (
+          {currentUser && (
             <Button
               variant='outlined'
               sx={{ ml: 'auto', color: 'primary.text' }}

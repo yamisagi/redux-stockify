@@ -85,6 +85,7 @@ In this project, I built a simple stock app using React, React Router, React Cus
 - [x] Optimize Modal Component for Reusability
 - [x] Add & Update & Delete Brand Data to/from the Backend
 - [x] Optimize Brand Component for Reusability
+- [x] Implement Persist Store 
 
 
 <p align="center">(Still working on it...)</p>

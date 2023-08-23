@@ -23,7 +23,6 @@ const useAuthOperations = () => {
     dispatch(fetchStart());
     try {
       const { data } = await axiosWithoutToken.post(loginUrl, userData);
-      sessionStorage.setItem('token', data.key);
       const { key, user } = data;
       dispatch(
         // We can use this action to set the user data in the store or
