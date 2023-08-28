@@ -81,12 +81,12 @@ In this project, I built a simple stock app using React, React Router, React Cus
 - [x] Get & Delete Stock Data
 - [x] Add Firm Data to the Backend
 - [x] Delete Firm Data from the Backend
-- [x] Update Firm Data in the Backend 
+- [x] Update Firm Data in the Backend
 - [x] Optimize Modal Component for Reusability
 - [x] Add & Update & Delete Brand Data to/from the Backend
 - [x] Optimize Brand Component for Reusability
-- [x] Implement Persist Store 
-
+- [x] Implement Persist Store
+- [x] Implement Product Page & DataGrid Component
 
 <p align="center">(Still working on it...)</p>
 

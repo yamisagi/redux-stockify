@@ -4,4 +4,5 @@ export const getStaticProps = {
   FIRMS: 'firms',
   PRODUCTS: 'products',
   BRANDS: 'brands',
+  CATEGORIES: 'categories',
 };
