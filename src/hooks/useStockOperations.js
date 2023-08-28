@@ -1,5 +1,10 @@
 import { useDispatch } from 'react-redux';
-import { fetchFail, fetchStart, getInfoSuccess } from '../features/stockSlice';
+import {
+  fetchFail,
+  fetchStart,
+  getInfoSuccess,
+  getProdCatBrandsSuccess,
+} from '../features/stockSlice';
 import { toastSuccessNotify, toastErrorNotify } from '../helper/ToastNotify';
 import useAxios from './useAxios';
 
@@ -60,8 +65,35 @@ const useStockOperations = () => {
       console.log(error);
     }
   };
+  const getProductCategoriesBrands = async () => {
+    dispatch(fetchStart());
+    try {
+      const [products, categories, brands] = await Promise.all([
+        axiosWithToken('stock/products/'),
+        axiosWithToken('stock/categories/'),
+        axiosWithToken('stock/brands/'),
+      ]);
 
-  return { getInfo, deleteStockInfo, postStockInfo, updateStockInfo };
+      dispatch(
+        getProdCatBrandsSuccess([
+          products?.data,
+          categories?.data,
+          brands?.data,
+        ])
+      );
+    } catch (error) {
+      console.log(error);
+      dispatch(fetchFail());
+      toastErrorNotify(`Data can not be fetched`);
+    }
+  };
+  return {
+    getInfo,
+    deleteStockInfo,
+    postStockInfo,
+    updateStockInfo,
+    getProductCategoriesBrands,
+  };
 };
 
 export default useStockOperations;

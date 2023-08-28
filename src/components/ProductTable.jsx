@@ -1,14 +1,15 @@
 import React from 'react';
 import Box from '@mui/material/Box';
-import {
-  DataGrid,
-  GridActionsCell,
-  GridActionsCellItem,
-} from '@mui/x-data-grid';
+import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import CircularProgress from '@mui/material/CircularProgress';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import useStockOperations from '../hooks/useStockOperations';
+import { getStaticProps } from '../constants/stockTypes';
+import { GridToolbar } from '@mui/x-data-grid';
 
 const ProductTable = ({ loading, products }) => {
+  const { deleteStockInfo } = useStockOperations();
+  const { PRODUCTS } = getStaticProps;
   const columns = [
     {
       field: 'id',
@@ -17,7 +18,6 @@ const ProductTable = ({ loading, products }) => {
       flex: 0.5,
       align: 'center',
     },
-
     {
       field: 'category',
       headerName: 'Category',
@@ -63,6 +63,7 @@ const ProductTable = ({ loading, products }) => {
           icon={<DeleteForeverIcon sx={{ color: 'red' }} />}
           label='Delete'
           showInMenu={window.outerWidth < 600}
+          onClick={() => deleteStockInfo(PRODUCTS, params.row.id)}
         />,
       ],
     },
@@ -91,17 +92,34 @@ const ProductTable = ({ loading, products }) => {
           }}
         >
           <DataGrid
+            autoHeight // If this is not set, the table will not show noRowsOverlay !
             sx={{ mt: 2 }}
             rows={products}
             columns={columns}
             initialState={{
               pagination: {
                 paginationModel: {
-                  pageSize: 5,
+                  pageSize: 10,
                 },
               },
             }}
-            pageSizeOptions={[5]}
+            slots={{
+              toolbar: GridToolbar,
+              // If no rows are found, display this overlay
+              noRowsOverlay: () => (
+                <Box
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%',
+                  }}
+                >
+                  No products found.
+                </Box>
+              ),
+            }}
+            pageSizeOptions={[10, 20, 50]}
             checkboxSelection
             disableRowSelectionOnClick
           />

@@ -9,7 +9,7 @@ import { getStaticProps } from '../constants/stockTypes';
 const Products = () => {
   const { products, loading } = useSelector((state) => state.stock);
   const { PRODUCTS, CATEGORIES, BRANDS } = getStaticProps;
-  const { getInfo } = useStockOperations();
+  const { getProductCategoriesBrands } = useStockOperations();
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -18,9 +18,7 @@ const Products = () => {
   };
 
   useEffect(() => {
-    getInfo(PRODUCTS);
-    getInfo(CATEGORIES);
-    getInfo(BRANDS);
+    getProductCategoriesBrands();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
