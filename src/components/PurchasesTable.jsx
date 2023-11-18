@@ -6,64 +6,96 @@ import { GridToolbar } from '@mui/x-data-grid';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import useStockOperations from '../hooks/useStockOperations';
 import { getStaticProps } from '../constants/stockTypes';
+import EditIcon from '@mui/icons-material/Edit';
 
-const ProductTable = ({ loading, products }) => {
+const PurchasesTable = ({ loading, purchases, setInfo, handleOpen }) => {
   const { deleteStockInfo } = useStockOperations();
-  const { PRODUCTS } = getStaticProps;
+  const { PURCHASES } = getStaticProps;
   const columns = [
     {
-      field: 'id',
-      headerName: '#',
+      field: 'createds',
+      headerName: 'Date',
+      minWidth: 150,
       headerAlign: 'center',
-      flex: 0.5,
       align: 'center',
     },
     {
-      field: 'category',
-      headerName: 'Category',
+      field: 'firm',
+      headerName: 'Firm',
+      flex: 2,
+      minWidth: 100,
       headerAlign: 'center',
       align: 'center',
-      flex: 2,
     },
+
     {
       field: 'brand',
       headerName: 'Brand',
-      type: 'number',
+      flex: 1.5,
+      minWidth: 100,
       headerAlign: 'center',
       align: 'center',
-      flex: 1,
     },
     {
-      field: 'name',
-      headerName: 'Name',
-      sortable: true,
+      field: 'product',
+      headerName: 'Product',
+      flex: 1.5,
+      minWidth: 100,
       headerAlign: 'center',
       align: 'center',
-      flex: 1,
     },
     {
-      field: 'stock',
-      headerName: 'Stock',
-      type: 'number',
+      field: 'quantity',
+      headerName: 'Quantity',
+      minWidth: 70,
       headerAlign: 'center',
       align: 'center',
       flex: 1,
+      type: 'number',
+    },
+    {
+      field: 'price',
+      headerName: 'Price',
+      minWidth: 70,
+      headerAlign: 'center',
+      align: 'center',
+      flex: 1,
+      type: 'number',
+    },
+    {
+      field: 'price_total',
+      headerName: 'Amount',
+      minWidth: 90,
+      headerAlign: 'center',
+      align: 'center',
+      flex: 1,
+      type: 'number',
     },
     {
       field: 'actions',
       headerName: 'Actions',
+      minWidth: 70,
       headerAlign: 'center',
-      type: 'actions',
       align: 'center',
       flex: 1,
-      sortable: false,
-      getActions: (params) => [
+      renderCell: ({
+        id,
+        row: { brand_id, product_id, quantity, price, firm_id },
+      }) => [
         <GridActionsCellItem
-          key={params.row.id}
+          key={'edit'}
+          icon={<EditIcon />}
+          label='Edit'
+          onClick={() => {
+            handleOpen()
+            setInfo({ id, firm_id, brand_id, product_id, quantity, price })
+          }}
+        />,
+        <GridActionsCellItem
+          key='delete'
           icon={<DeleteForeverIcon sx={{ color: 'red' }} />}
           label='Delete'
-          showInMenu={window.outerWidth < 600}
-          onClick={() => deleteStockInfo(PRODUCTS, params.row.id)}
+          onClick={() => deleteStockInfo(PURCHASES, id)}
         />,
       ],
     },
@@ -94,7 +126,7 @@ const ProductTable = ({ loading, products }) => {
           <DataGrid
             autoHeight // If this is not set, the table will not show noRowsOverlay !
             sx={{ mt: 2 }}
-            rows={products}
+            rows={purchases}
             columns={columns}
             initialState={{
               pagination: {
@@ -120,7 +152,6 @@ const ProductTable = ({ loading, products }) => {
               ),
             }}
             pageSizeOptions={[10, 20, 50]}
-            checkboxSelection
             disableRowSelectionOnClick
           />
         </Box>
@@ -129,4 +160,4 @@ const ProductTable = ({ loading, products }) => {
   );
 };
 
-export default ProductTable;
+export default PurchasesTable;

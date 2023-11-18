@@ -5,10 +5,9 @@ import { useSelector } from 'react-redux';
 import { Typography } from '@mui/material';
 import ProductModal from '../components/modals/ProductModal';
 import useStockOperations from '../hooks/useStockOperations';
-import { getStaticProps } from '../constants/stockTypes';
+
 const Products = () => {
   const { products, loading } = useSelector((state) => state.stock);
-  const { PRODUCTS, CATEGORIES, BRANDS } = getStaticProps;
   const { getProductCategoriesBrands } = useStockOperations();
   const [open, setOpen] = useState(false);
 
