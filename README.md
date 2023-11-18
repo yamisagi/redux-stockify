@@ -6,7 +6,10 @@
   <h2 align="center">Stock App React</h2>
 
   <p align="center">
-    A simple stock app built with React, React Router, React Custom Hooks, and MUI Based Components.
+    This application represents a comprehensive stock management solution, meticulously crafted using a robust technology stack that includes React, React Router, Redux for state management, MUI for UI components, as well as Axios for data exchange, Formik and Yup for form management and validation, and Redux Persist for persistent state storage. It adheres to best practices such as functional components, custom hooks to encapsulate logic, and Redux for effectively managing the application state. The app seamlessly integrates React Router for smooth navigation and employs MUI Based Components to provide a modern, user-friendly interface. 
+    <br/>
+    <br/>
+    The integration of Axios, Formik, Yup, and Redux Persist enhances the application's capabilities, offering a robust and feature-rich stock management experience.
   </p>
 
   <p>
@@ -61,7 +64,21 @@
 <!-- add asset here later -->
 <!--<img src="https://github.com/yamisagi/us/blob/main/assets/product.gif" width="350" height="550"> -->
 
-In this project, I built a simple stock app using React, React Router, React Custom Hooks, and MUI Based Components. I used the [React Router](https://reactrouter.com/) to navigate between the pages. I used the [React Custom Hooks](https://reactjs.org/docs/hooks-custom.html) to create custom hooks and used the [Material UI](https://material-ui.com/) to create the UI components.
+This project aims to create a comprehensive stock management application using powerful technologies such as React, React Router, React Custom Hooks, MUI Based Components, as well as tools like Axios, Formik, Yup, and Redux Persist. Here are the key features of the project:
+
+- **React and React Router**: Utilized [React Router](https://reactrouter.com/) for seamless navigation between pages.
+  
+- **React Custom Hooks**: Used [React Custom Hooks](https://reactjs.org/docs/hooks-custom.html) to organize logical processes within the application and enhance code modularity.
+
+- **Material UI**: Employed [Material UI](https://material-ui.com/) to design a stylish and user-friendly interface.
+
+- **Axios**: Integrated [Axios](https://axios-http.com/) for data exchange.
+
+- **Formik and Yup**: Incorporated [Formik](https://formik.org/) and [Yup](https://github.com/jquense/yup) for form management and validation.
+
+- **Redux Persist**: Utilized [Redux Persist](https://github.com/rt2zz/redux-persist) for application state management.
+
+The integration of this extensive toolset results in a robust technical foundation and an impressive user experience.
 
 <!-- ROADMAP -->
 
