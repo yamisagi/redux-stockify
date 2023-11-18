@@ -75,7 +75,19 @@ const Brands = () => {
           />
           <Grid container spacing={2}>
             {brands.map((brand) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={brand.id}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                key={brand.id}
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
                 <BrandCard
                   brand={brand}
                   handleOpen={handleOpen}

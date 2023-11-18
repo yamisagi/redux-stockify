@@ -32,6 +32,7 @@ export default function FirmCard({ brand, handleOpen, setIsUpdate, setInfo }) {
           mt: 1,
           height: 140,
           maxHeight: 140,
+          minWidth: 345,
           imageOrientation: 'center',
           objectFit: 'contain',
         }}

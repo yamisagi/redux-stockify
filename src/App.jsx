@@ -20,6 +20,7 @@ function App() {
         drawerItemHover: '#FFDFDF',
         active: '#4C0027',
         appBar: '#AF2655',
+        card: '#F2F2F2',
       },
       secondary: {
         main: '#F2F2F2',

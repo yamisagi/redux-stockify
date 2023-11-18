@@ -79,7 +79,18 @@ const Firms = () => {
           />
           <Grid container spacing={2}>
             {firms.map((firm) => (
-              <Grid item xs={12} sm={6} md={4} lg={3} key={firm.id}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                lg={3}
+                key={firm.id}
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
+              >
                 <FirmCard
                   firm={firm}
                   handleOpen={handleOpen}
