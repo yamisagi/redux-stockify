@@ -2,8 +2,8 @@ import Avatar from '@mui/material/Avatar';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import image from '../assets/result.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import loginImg from '../assets/login.png';
+import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import { Formik } from 'formik';
 import { loginSchema } from '../constants/validationSchemas';
@@ -22,11 +22,11 @@ const Login = () => {
         justifyContent='center'
         direction='row-reverse'
         sx={{
-          height: '100vh',
-          p: 2,
+          height: '95vh',
+          p: 5,
         }}
       >
-        <Grid item xs={12} mb={3}>
+        <Grid item xs={12}>
           <Typography
             variant='h3'
             color='primary'
@@ -34,37 +34,43 @@ const Login = () => {
             sx={{
               fontWeight: 'bold',
               letterSpacing: '0.1em',
+              color: 'primary.textHeaderColor',
             }}
           >
-            STOCK APP
+            Redux Stockify
           </Typography>
         </Grid>
-
-        <Grid item xs={12} sm={10} md={6}>
-          <Avatar
+        <Grid item xs={10} sm={8} md={9}>
+          <Container
             sx={{
-              backgroundColor: 'primary.button',
-              m: 'auto',
-              width: 40,
-              height: 40,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100%',
+              width: '100%',
             }}
           >
-            <Fingerprint />
-          </Avatar>
+            <img src={loginImg} alt='img' style={{ maxWidth: '300px' }} />
+          </Container>
+        </Grid>
+        <Grid item xs={12} sm={10} md={6}>
           <Typography
-            variant='h4'
-            align='center'
+            variant='h5'
+            align='left'
             mb={4}
             color='primary.textHeaderColor'
           >
-            Login
+            Hello, Guest! <br />
+            Welcome to Redux Stockify,
+            <br />
+            Before Continue, Please Sign in First.
           </Typography>
 
           <Formik
             initialValues={{ email: '', password: '' }}
             validationSchema={loginSchema}
             onSubmit={(values, actions) => {
-              login(values);            
+              login(values);
               actions.setSubmitting(false);
               actions.resetForm();
             }}
@@ -84,12 +90,6 @@ const Login = () => {
               Don&#39;t have an account? Register
             </Link>
           </Box>
-        </Grid>
-
-        <Grid item xs={10} sm={7} md={6}>
-          <Container>
-            <img src={image} alt='img' />
-          </Container>
         </Grid>
       </Grid>
     </Container>

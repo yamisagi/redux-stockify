@@ -11,17 +11,19 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: grey['900'],
-        button: purple['600'],
-        text: grey['50'],
-        buttonHover: purple['800'],
-        textHeaderColor: purple['800'],
-        drawer: purple['300'],
-        drawerItemHover: purple['900'],
-        active: purple['800'],
+        main: '#860A35',
+        button: '#AF2655',
+        text: '#F2F2F2',
+        buttonHover: '#860A35',
+        textHeaderColor: '#22092C',
+        drawer: '#860A35',
+        drawerItemHover: '#AF2655',
+        active: '#AF2655',
+        appBar: '#AF2655',
       },
       secondary: {
-        main: blueGrey['900'],
+        main: '#F2F2F2',
+        light: '#872341',
       },
     },
     typography: {

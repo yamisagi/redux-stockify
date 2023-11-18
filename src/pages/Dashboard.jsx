@@ -13,6 +13,8 @@ import useAuthOperations from '../hooks/useAuthOperations';
 import { useSelector } from 'react-redux';
 import MenuListItem from '../components/MenuListItem';
 import { Outlet } from 'react-router-dom';
+// Log Out Icon MUI
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 const drawerWidth = 200;
 
@@ -43,6 +45,8 @@ const Dashboard = (props) => {
       <AppBar
         position='fixed'
         sx={{
+          display: 'flex',
+          backgroundColor: 'primary.appBar',
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
         }}
@@ -57,18 +61,31 @@ const Dashboard = (props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant='h6' noWrap component='div'>
-            Stock App
+          <Typography
+            variant='h6'
+            noWrap
+            component='div'
+            sx={{
+              textAlign: 'center',
+              color: 'primary.text',
+              flexGrow: 1,
+            }}
+          >
+            Redux Stockify
           </Typography>
           {currentUser && (
             <Button
-              variant='outlined'
-              sx={{ ml: 'auto', color: 'primary.text' }}
+              variant='text'
+              sx={{
+                borderRadius: '15px',
+                ml: 'auto',
+                color: 'primary.text',
+              }}
               onClick={() => {
                 logout();
               }}
             >
-              Logout
+              <ExitToAppIcon />
             </Button>
           )}
         </Toolbar>

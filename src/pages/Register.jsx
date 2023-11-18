@@ -1,7 +1,7 @@
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Avatar from '@mui/material/Avatar';
-import image from '../assets/result.svg';
+import registerImg from '../assets/register.png';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import { Link, useNavigate } from 'react-router-dom';
@@ -19,10 +19,9 @@ const Register = () => {
         container
         justifyContent='center'
         direction='row-reverse'
-        rowSpacing={{ sm: 3 }}
         sx={{
-          height: '100vh',
-          p: 2,
+          height: '95vh',
+          p: 5,
         }}
       >
         <Grid item xs={12}>
@@ -33,30 +32,42 @@ const Register = () => {
             sx={{
               fontWeight: 'bold',
               letterSpacing: '0.1em',
+              color: 'primary.textHeaderColor',
             }}
           >
-            STOCK APP
+            Redux Stockify
           </Typography>
         </Grid>
-
-        <Grid item xs={12} sm={10} md={6}>
-          <Avatar
+        <Grid item xs={10} sm={8} md={9}>
+          <Container
             sx={{
-              backgroundColor: 'primary.button',
-              m: 'auto',
-              width: 40,
-              height: 40,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100%',
+              width: '100%',
             }}
           >
-            <Fingerprint />
-          </Avatar>
+            <img src={registerImg} alt='img' style={{ maxWidth: '300px' }} />
+          </Container>
+        </Grid>
+        <Grid item xs={12} sm={10} md={6}>
           <Typography
-            variant='h4'
+            variant='h5'
             align='center'
             mb={2}
             color='primary.textHeaderColor'
           >
-            Register
+            Don&apos;t have an Account? Create one,
+          </Typography>
+          <Typography
+            variant='h5'
+            align='center'
+            mb={2}
+            color='primary.main'
+            fontWeight='lighter'
+          >
+            It&apos;s quick and easy.
           </Typography>
 
           <Formik
@@ -79,7 +90,7 @@ const Register = () => {
             component={(props) => <RegisterForm {...props} />}
           ></Formik>
 
-          <Box sx={{ textAlign: 'center', mt: 2 }}>
+          <Box sx={{ textAlign: 'center', m: 2 }}>
             <Link
               style={{
                 fontFamily: 'Poppins',
@@ -92,12 +103,6 @@ const Register = () => {
               Already have an account? Login
             </Link>
           </Box>
-        </Grid>
-
-        <Grid item xs={0} sm={7} md={6}>
-          <Container>
-            <img src={image} alt='' />
-          </Container>
         </Grid>
       </Grid>
     </Container>
