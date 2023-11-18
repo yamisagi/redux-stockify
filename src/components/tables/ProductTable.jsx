@@ -13,7 +13,7 @@ const ProductTable = ({ loading, products }) => {
   const columns = [
     {
       field: 'id',
-      headerName: '#',
+      headerName: 'ID',
       headerAlign: 'center',
       flex: 0.5,
       align: 'center',

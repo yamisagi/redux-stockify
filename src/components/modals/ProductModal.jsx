@@ -122,7 +122,7 @@ export default function ProductModal({ open, handleClose }) {
             type='text'
           />
           <Button variant='contained' type='submit'>
-            Submit
+            Add new Product
           </Button>
         </Box>
       </Modal>

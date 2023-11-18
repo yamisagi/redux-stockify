@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ProductTable from '../components/ProductTable';
+import ProductTable from '../components/tables/ProductTable';
 import { Button } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { Typography } from '@mui/material';
