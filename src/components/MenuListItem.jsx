@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
@@ -9,8 +9,8 @@ import menuItems from '../constants/menuItems';
 import { useNavigate } from 'react-router-dom';
 
 const MenuListItem = ({ mobileOpen, setMobileOpen }) => {
-  // TODO: Set Active Menu Item on click
   const navigate = useNavigate();
+  const [activeItem, setActiveItem] = useState(null);
   const { window } = globalThis || {};
   return (
     <List>
@@ -21,12 +21,14 @@ const MenuListItem = ({ mobileOpen, setMobileOpen }) => {
           sx={{
             cursor: 'pointer',
             color: 'white',
+            backgroundColor: item.title === activeItem ? 'primary.active' : 'transparent',
             '&:hover': { color: 'primary.drawerItemHover' },
             '&:hover .MuiSvgIcon-root': {
               color: 'primary.drawerItemHover',
             },
           }}
           onClick={() => {
+            setActiveItem(item.title);
             if (item.title === 'Admin Panel') {
               window.open(item.link, '_blank');
               return;

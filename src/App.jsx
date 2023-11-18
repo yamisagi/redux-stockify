@@ -18,6 +18,7 @@ function App() {
         textHeaderColor: purple['800'],
         drawer: purple['300'],
         drawerItemHover: purple['900'],
+        active: purple['800'],
       },
       secondary: {
         main: blueGrey['900'],
