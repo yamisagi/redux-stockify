@@ -37,6 +37,7 @@ const Sales = () => {
         variant='h5'
         sx={{
           mb: 2,
+          fontWeight: 'bold',
         }}
       >
         Sales

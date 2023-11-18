@@ -34,6 +34,7 @@ const Purchases = () => {
         variant='h5'
         sx={{
           mb: 2,
+          fontWeight: 'bold',
         }}
       >
         Purchases

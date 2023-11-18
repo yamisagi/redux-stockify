@@ -49,6 +49,7 @@ const Dashboard = (props) => {
           backgroundColor: 'primary.appBar',
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
+          borderRadius: { xs: '0 0 15px 15px', sm: '0 0 15px 0' },
         }}
       >
         <Toolbar>
@@ -69,6 +70,7 @@ const Dashboard = (props) => {
               textAlign: 'center',
               color: 'primary.text',
               flexGrow: 1,
+              fontWeight: 'bold',
             }}
           >
             Redux Stockify
@@ -106,6 +108,7 @@ const Dashboard = (props) => {
           sx={{
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': {
+              borderRadius: '0 0 15px 0',
               boxSizing: 'border-box',
               width: drawerWidth,
               backgroundColor: 'primary.drawer',
@@ -119,6 +122,7 @@ const Dashboard = (props) => {
           sx={{
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': {
+              borderRadius: '0 0 15px 0',
               boxSizing: 'border-box',
               width: drawerWidth,
               backgroundColor: 'primary.drawer',

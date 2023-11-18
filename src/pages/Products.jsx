@@ -27,6 +27,7 @@ const Products = () => {
         variant='h5'
         sx={{
           mb: 2,
+          fontWeight: 'bold',
         }}
       >
         Products

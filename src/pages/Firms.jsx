@@ -55,6 +55,7 @@ const Firms = () => {
             variant='h5'
             sx={{
               mb: 2,
+              fontWeight: 'bold',
             }}
           >
             Firms

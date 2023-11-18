@@ -17,8 +17,8 @@ function App() {
         buttonHover: '#860A35',
         textHeaderColor: '#22092C',
         drawer: '#860A35',
-        drawerItemHover: '#AF2655',
-        active: '#AF2655',
+        drawerItemHover: '#FFDFDF',
+        active: '#4C0027',
         appBar: '#AF2655',
       },
       secondary: {
