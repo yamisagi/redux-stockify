@@ -37,6 +37,7 @@ export default function FirmCard({ brand, handleOpen, setIsUpdate, setInfo }) {
         }}
       />
       <CardActionArea
+        disabled
         sx={{
           height: '100%',
         }}
@@ -55,6 +56,7 @@ export default function FirmCard({ brand, handleOpen, setIsUpdate, setInfo }) {
             gutterBottom
             variant='h5'
             component='div'
+            aria-disabled='true'
             sx={{
               textTransform: 'capitalize',
               fontWeight: 'bold',

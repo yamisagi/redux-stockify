@@ -37,11 +37,12 @@ export default function FirmCard({ firm, handleOpen, setIsUpdate, setInfo }) {
         }}
       />
       <CardActionArea
+      disabled
         sx={{
           height: '100%',
         }}
       >
-        <CardContent
+        <CardContent          
           sx={{
             maxHeight: 240,
             display: 'flex',
