@@ -4,8 +4,8 @@ import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import CircularProgress from '@mui/material/CircularProgress';
 import { GridToolbar } from '@mui/x-data-grid';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import useStockOperations from '../hooks/useStockOperations';
-import { getStaticProps } from '../constants/stockTypes';
+import useStockOperations from '../../hooks/useStockOperations';
+import { getStaticProps } from '../../constants/stockTypes';
 
 const ProductTable = ({ loading, products }) => {
   const { deleteStockInfo } = useStockOperations();

@@ -4,13 +4,15 @@ import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
 import CircularProgress from '@mui/material/CircularProgress';
 import { GridToolbar } from '@mui/x-data-grid';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import useStockOperations from '../hooks/useStockOperations';
-import { getStaticProps } from '../constants/stockTypes';
+import useStockOperations from '../../hooks/useStockOperations';
+import { getStaticProps } from '../../constants/stockTypes';
 import EditIcon from '@mui/icons-material/Edit';
+import { useSelector } from 'react-redux';
 
-const PurchasesTable = ({ loading, purchases, setInfo, handleOpen }) => {
+const SalesTable = ({ loading, setInfo, handleOpen }) => {
   const { deleteStockInfo } = useStockOperations();
-  const { PURCHASES } = getStaticProps;
+  const { sales } = useSelector((state) => state.stock);
+  const { SALES } = getStaticProps;
   const columns = [
     {
       field: 'createds',
@@ -18,20 +20,13 @@ const PurchasesTable = ({ loading, purchases, setInfo, handleOpen }) => {
       minWidth: 150,
       headerAlign: 'center',
       align: 'center',
-    },
-    {
-      field: 'firm',
-      headerName: 'Firm',
-      flex: 2,
-      minWidth: 100,
-      headerAlign: 'center',
-      align: 'center',
+      flex: 1,
     },
 
     {
       field: 'brand',
       headerName: 'Brand',
-      flex: 1.5,
+      flex: 1,
       minWidth: 100,
       headerAlign: 'center',
       align: 'center',
@@ -39,7 +34,7 @@ const PurchasesTable = ({ loading, purchases, setInfo, handleOpen }) => {
     {
       field: 'product',
       headerName: 'Product',
-      flex: 1.5,
+      flex: 1,
       minWidth: 100,
       headerAlign: 'center',
       align: 'center',
@@ -47,29 +42,26 @@ const PurchasesTable = ({ loading, purchases, setInfo, handleOpen }) => {
     {
       field: 'quantity',
       headerName: 'Quantity',
-      minWidth: 70,
+      minWidth: 100,
       headerAlign: 'center',
       align: 'center',
       flex: 1,
-      type: 'number',
     },
     {
       field: 'price',
       headerName: 'Price',
-      minWidth: 70,
+      minWidth: 80,
       headerAlign: 'center',
       align: 'center',
       flex: 1,
-      type: 'number',
     },
     {
       field: 'price_total',
       headerName: 'Amount',
-      minWidth: 90,
+      minWidth: 80,
       headerAlign: 'center',
       align: 'center',
       flex: 1,
-      type: 'number',
     },
     {
       field: 'actions',
@@ -80,22 +72,22 @@ const PurchasesTable = ({ loading, purchases, setInfo, handleOpen }) => {
       flex: 1,
       renderCell: ({
         id,
-        row: { brand_id, product_id, quantity, price, firm_id },
+        row: { brand_id, product_id, quantity, price  },
       }) => [
         <GridActionsCellItem
           key={'edit'}
           icon={<EditIcon />}
           label='Edit'
           onClick={() => {
-            handleOpen()
-            setInfo({ id, firm_id, brand_id, product_id, quantity, price })
+            handleOpen();
+            setInfo({ id, brand_id, product_id, quantity, price });
           }}
         />,
         <GridActionsCellItem
           key='delete'
           icon={<DeleteForeverIcon sx={{ color: 'red' }} />}
           label='Delete'
-          onClick={() => deleteStockInfo(PURCHASES, id)}
+          onClick={() => deleteStockInfo(SALES, id)}
         />,
       ],
     },
@@ -126,7 +118,7 @@ const PurchasesTable = ({ loading, purchases, setInfo, handleOpen }) => {
           <DataGrid
             autoHeight // If this is not set, the table will not show noRowsOverlay !
             sx={{ mt: 2 }}
-            rows={purchases}
+            rows={sales}
             columns={columns}
             initialState={{
               pagination: {
@@ -147,7 +139,7 @@ const PurchasesTable = ({ loading, purchases, setInfo, handleOpen }) => {
                     height: '100%',
                   }}
                 >
-                  No products found.
+                  No sales found.
                 </Box>
               ),
             }}
@@ -160,4 +152,4 @@ const PurchasesTable = ({ loading, purchases, setInfo, handleOpen }) => {
   );
 };
 
-export default PurchasesTable;
+export default SalesTable;

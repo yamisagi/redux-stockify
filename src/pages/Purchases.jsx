@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import useStockOperations from '../hooks/useStockOperations';
 import { getStaticProps } from '../constants/stockTypes';
-import PurchasesTable from '../components/PurchasesTable';
+import PurchasesTable from '../components/tables/PurchasesTable';
 import { Button, Typography } from '@mui/material';
 import PurchasesModal from '../components/modals/PurchasesModal';
 
