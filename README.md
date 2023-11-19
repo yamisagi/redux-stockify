@@ -62,7 +62,10 @@
 ## About The Project
 
 <!-- add asset here later -->
-<!--<img src="https://github.com/yamisagi/us/blob/main/assets/product.gif" width="350" height="550"> -->
+
+https://github.com/yamisagi/redux-stockify/assets/84624853/1e19cc03-7f9a-4510-91c3-5c6a55f5ddb0
+
+
 
 This project aims to create a comprehensive stock management application using powerful technologies such as React, React Router, React Custom Hooks, MUI Based Components, as well as tools like Axios, Formik, Yup, and Redux Persist. Here are the key features of the project:
 
