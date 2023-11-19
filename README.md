@@ -6,10 +6,10 @@
   <h2 align="center">Stock App React</h2>
 
   <p align="center">
-    This application represents a comprehensive stock management solution, meticulously crafted using a robust technology stack that includes React, React Router, Redux for state management, MUI for UI components, as well as Axios for data exchange, Formik and Yup for form management and validation, and Redux Persist for persistent state storage. It adheres to best practices such as functional components, custom hooks to encapsulate logic, and Redux for effectively managing the application state. The app seamlessly integrates React Router for smooth navigation and employs MUI Based Components to provide a modern, user-friendly interface. 
+    This application represents a comprehensive stock management solution, meticulously crafted using a robust technology stack that includes React, React Router, Redux for state management, MUI for UI components, as well as Axios for data exchange, Formik and Yup for form management and validation,  Redux Persist for persistent state storage and Tremor Charts for data visualization. It adheres to best practices such as functional components, custom hooks to encapsulate logic, and Redux for effectively managing the application state. The app seamlessly integrates React Router for smooth navigation and employs MUI Based Components to provide a modern, user-friendly interface. 
     <br/>
     <br/>
-    The integration of Axios, Formik, Yup, and Redux Persist enhances the application's capabilities, offering a robust and feature-rich stock management experience.
+    The integration of Tremor, Axios, Formik, Yup, and Redux & Redux Persist enhances the application's capabilities, offering a robust and feature-rich stock management experience.
   </p>
 
   <p>
@@ -78,6 +78,8 @@ This project aims to create a comprehensive stock management application using p
 
 - **Redux Persist**: Utilized [Redux Persist](https://github.com/rt2zz/redux-persist) for application state management.
 
+- **Tremor Charts**: Implemented [Tremor Charts](https://www.tremor.so) to enhance data visualization capabilities within the application. Tremor Charts provides a powerful and flexible solution for creating interactive and dynamic charts, allowing users to analyze stock trends, monitor fluctuations, and make informed decisions.
+
 The integration of this extensive toolset results in a robust technical foundation and an impressive user experience.
 
 <!-- ROADMAP -->
@@ -104,6 +106,10 @@ The integration of this extensive toolset results in a robust technical foundati
 - [x] Optimize Brand Component for Reusability
 - [x] Implement Persist Store
 - [x] Implement Product Page & DataGrid Component
+- [x] Implement Sales, Purchase, and Stock Pages & DataGrid Components
+- [x] Create KPI Component for Dashboard Page
+- [x] Implement Dashboard Page
+
 
 <p align="center">(Still working on it...)</p>
 
