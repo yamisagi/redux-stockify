@@ -23,10 +23,10 @@ const Charts = () => {
     'Total Price': Number(purchase.price_total),
   }));
 
-  
+
 
   return (
-    <Grid container className='p-10 mx-auto' spacing={2}>
+    <Grid container className='p-5 md:p-10 mx-auto' spacing={2}>
       <Grid item xs={12} md={6}>
         <Card className='mt-10 flex flex-col mx-auto'>
           <Title>Total Sales</Title>

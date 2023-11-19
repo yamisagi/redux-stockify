@@ -109,6 +109,11 @@ The integration of this extensive toolset results in a robust technical foundati
 - [x] Implement Sales, Purchase, and Stock Pages & DataGrid Components
 - [x] Create KPI Component for Dashboard Page
 - [x] Implement Dashboard Page
+- [x] Implement Charts
+- [x] Improve UI of the Dashboard Page
+- [x] Fix Bugs and Improve Code Quality
+- [x] Finish the Project 🎉
+- [x] Deploy the Project to Vercel 🚀
 
 
 <p align="center">(Still working on it...)</p>

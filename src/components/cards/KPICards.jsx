@@ -58,13 +58,13 @@ const KPICards = ({ totalSales, totalPurchases }) => {
             }}
           >
             <Card
+              className='w-full mx-3'
               sx={{
                 display: 'flex',
                 gap: 3,
                 p: 2,
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                width: '380px',
                 maxWidth: '100%',
                 backgroundColor: 'primary.card',
               }}
