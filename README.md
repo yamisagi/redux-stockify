@@ -3,7 +3,7 @@
     <img src="https://avatars.githubusercontent.com/u/84624853?v=4" width="100" height="100">
   </a>
 
-  <h2 align="center">Stock App React</h2>
+  <h2 align="center">Redux Stockify</h2>
 
   <p align="center">
     This application represents a comprehensive stock management solution, meticulously crafted using a robust technology stack that includes React, React Router, Redux for state management, MUI for UI components, as well as Axios for data exchange, Formik and Yup for form management and validation,  Redux Persist for persistent state storage and Tremor Charts for data visualization. It adheres to best practices such as functional components, custom hooks to encapsulate logic, and Redux for effectively managing the application state. The app seamlessly integrates React Router for smooth navigation and employs MUI Based Components to provide a modern, user-friendly interface. 
@@ -118,8 +118,6 @@ The integration of this extensive toolset results in a robust technical foundati
 - [x] Finish the Project 🎉
 - [x] Deploy the Project to Vercel 🚀
 
-
-<p align="center">(Still working on it...)</p>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
